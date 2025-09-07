@@ -1,2 +1,4 @@
-let gmailButton = document.querySelector(".gb_W");
-gmailButton.style.display = 'none';
+let gmailButton = document.querySelector(".gb_X");
+if (gmailButton) {
+    gmailButton.style.display = 'none';
+}
