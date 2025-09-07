@@ -2,9 +2,9 @@
     "manifest_version": 3,
     "name": "Gmail button hider",
     "version": "1.0",
-    "description": "This extension hides the \"Gmail\" button on google.com, adding friction to the habit of checking email.",
+    "description": "This extension hides the \"Gmail\" button on google.com and the new tab page, adding friction to the habit of checking email.",
     "content_scripts": [{
-        "matches": ["*://*.google.com/*"],
+        "matches": ["*://*.google.com/*", "chrome://newtab/*"],
         "js": ["content.js"],
         "css": ["styles.css"],
         "run_at": "document_start"
