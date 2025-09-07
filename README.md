@@ -5,6 +5,7 @@ A simple Chrome extension that hides the "Gmail" button from Google's homepage a
 ## Features
 
 - 🚫 Hides the Gmail button from Google's interface
+- 🆕 Replaces Chrome's new tab page with a Gmail-free version
 - 🎯 Targets the correct Gmail button element (class `gb_X`)
 - ⚡ Lightweight and fast - minimal performance impact
 - 🔒 No data collection or external requests
@@ -33,8 +34,8 @@ A simple Chrome extension that hides the "Gmail" button from Google's homepage a
    - The extension should now appear in your extensions list
 
 5. **Verify Installation**
-   - Visit [google.com](https://google.com)
-   - The Gmail button should no longer be visible in the top navigation
+   - Visit [google.com](https://google.com) - The Gmail button should no longer be visible
+   - Open a new tab - You should see a custom Google-like page without the Gmail button
 
 ### Method 2: Install from Chrome Web Store (Coming Soon)
 
@@ -54,8 +55,9 @@ The extension targets the Gmail button with class `gb_X` which is the current cl
 ```
 gmail-button-hider/
 ├── manifest.json    # Extension configuration
-├── content.js       # JavaScript logic
+├── content.js       # JavaScript logic for google.com
 ├── styles.css       # CSS to hide the button
+├── newtab.html      # Custom new tab page
 └── README.md        # This file
 ```
 
@@ -63,18 +65,18 @@ gmail-button-hider/
 
 - **Manifest Version**: 3 (latest Chrome extension standard)
 - **Target Sites**: All Google domains (`*://*.google.com/*`)
+- **New Tab Override**: Replaces `chrome://newtab` with custom page
 - **Execution**: Runs at `document_start` for immediate effect
 - **Permissions**: No special permissions required
 
-## Limitations
+## How It Works
 
-### Chrome New Tab Page
-This extension cannot hide the Gmail button on Chrome's new tab page (`chrome://newtab`) due to Chrome's security restrictions. Chrome extensions are not allowed to inject content scripts into `chrome://` URLs. The extension only works on regular web pages like `google.com`.
+The extension uses two methods to reduce Gmail access:
 
-If you want to reduce Gmail access from the new tab page, consider:
-- Setting a different homepage in Chrome settings
-- Using a custom new tab page extension
-- Bookmarking a different search engine
+1. **Content Script Hiding**: On `google.com`, it hides the Gmail button using CSS and JavaScript
+2. **New Tab Override**: It replaces Chrome's default new tab page with a custom page that looks like Google but doesn't include the Gmail button
+
+The custom new tab page provides the same Google search functionality but removes the Gmail shortcut, adding friction to email checking habits.
 
 ## Troubleshooting
 
